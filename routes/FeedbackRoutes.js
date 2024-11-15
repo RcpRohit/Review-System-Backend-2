@@ -15,14 +15,15 @@ import {
 import { likeReviews } from "../controllers/likesController.js";
 import express from "express";
 import { isAdmin } from "../middleware/Middleware.js";
-
+import { isAlumni } from "../middleware/Middleware.js";
+import { isStudent } from "../middleware/Middleware.js";
 
 
 const router = express.Router();
 
 router.post("/admin/create", createAdmin);
-router.post("/alumni/create", createAlumni);
-router.post("/student/create", createStudent);
+router.post("/alumni/create",isAlumni, createAlumni);
+router.post("/student/create",isStudent, createStudent);
 router.post("/company/create", isAdmin, createCompany);
 router.post("/review/create", createReview);
 router.post("/like/add", likeReviews);
