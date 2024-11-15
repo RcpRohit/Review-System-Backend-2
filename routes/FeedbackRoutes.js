@@ -22,11 +22,11 @@ import { isStudent } from "../middleware/Middleware.js";
 const router = express.Router();
 
 router.post("/admin/create", createAdmin);
-router.post("/alumni/create",isAlumni, createAlumni);
-router.post("/student/create",isStudent, createStudent);
+router.post("/alumni/create",createAlumni);
+router.post("/student/create", createStudent);
 router.post("/company/create", isAdmin, createCompany);
-router.post("/review/create", createReview);
-router.post("/like/add", likeReviews);
+router.post("/review/create",isAlumni, createReview);
+router.post("/like/add",isStudent,likeReviews);
 router.get("/user/get", getAllUsers);
 router.get("/company/get", getCompanies);
 
